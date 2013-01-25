@@ -1,51 +1,50 @@
-require 'guard'
-require 'guard/guard'
+require "guard"
+require "guard/guard"
 
 module Guard
   class Teabag < Guard
+    autoload :Runner,    "guard/teabag/runner"
+    autoload :Inspector, "guard/teabag/inspector"
 
-    #attr_accessor :last_failed, :failed_paths, :runner, :inspector
+    attr_accessor :last_failed, :failed_paths, :runner, :inspector
 
     def initialize(watchers = [], options = {})
       super
-      #@options = {
-      #  :focus_on_failed => false,
-      #  :all_after_pass => true,
-      #  :all_on_start   => true,
-      #  :keep_failed    => true,
-      #  :spec_paths     => ["spec"],
-      #  :run_all        => {}
-      #}.merge(options)
-      #@last_failed  = false
-      #@failed_paths = []
-      #
-      #@inspector = Inspector.new(@options)
-      #@runner    = Runner.new(@options)
+      @options = {
+        focus_on_failed: false,
+        all_after_pass:  true,
+        all_on_start:    true,
+        keep_failed:     true,
+        run_all:         {}
+      }.merge(options)
+      reload
+
+      @inspector = Inspector.new(@options)
+      @runner    = Runner.new(@options)
     end
 
     def start
       UI.info "Guard::Teabag is running"
-      #run_all if @options[:all_on_start]
+      run_all if @options[:all_on_start]
     end
 
     def run_all
-      UI.info "Guard::Teabag run_all"
-      #passed = @runner.run(@inspector.spec_paths, @options[:run_all].merge(:message => 'Running all specs'))
-      #
-      #unless @last_failed = !passed
-      #  @failed_paths = []
-      #else
-      #  throw :task_has_failed
-      #end
+      passed = @runner.run_all(@options[:run_all])
+
+      unless @last_failed = !passed
+        @failed_paths = []
+      else
+        throw :task_has_failed
+      end
     end
 
     def reload
-      UI.info "Guard::Teabag reload"
-      #@failed_paths = []
+      @last_failed = false
+      @failed_paths = []
     end
 
     def run_on_changes(paths)
-      UI.info "Guard::Teabag run_on_changes"
+      UI.info paths.inspect
       #
       #original_paths = paths.dup
       #
@@ -109,20 +108,15 @@ module Guard
 
     private
 
-    def run(paths)
-    end
-
     def remove_failed(paths)
-      #@failed_paths -= paths if @options[:keep_failed]
+      @failed_paths -= paths if @options[:keep_failed]
     end
 
     def add_failed(paths)
-      #if @options[:keep_failed]
-      #  @failed_paths += paths
-      #  @failed_paths.uniq!
-      #end
+      if @options[:keep_failed]
+        @failed_paths += paths
+        @failed_paths.uniq!
+      end
     end
-
   end
 end
-

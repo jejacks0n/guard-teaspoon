@@ -1,5 +1,12 @@
-guard :teabag do
-  #watch('spec/spec_helper.rb') { }
-  #watch(%r{spec/.+_spec.rb})
-  #watch(%r{lib/(.+).rb})       { |m| "spec/#{ m[1] }_spec.rb" }
+guard :teabag, environment: "spec/dummy/spec/teabag_env.rb" do
+  root = "spec/dummy"
+
+  # Your implementation files
+  watch(%r{#{root}/app/assets/javascripts/(.*)})
+
+  # Jasmine/Mocha
+  watch(%r{#{root}/spec/javascripts/(.*)})
+
+  # QUnit
+  #watch(%r{#{root}/test/javascripts/(.*)})
 end
