@@ -44,7 +44,7 @@ module Guard
     end
 
     def run_on_changes(paths)
-      UI.info paths.inspect
+      @runner.run(paths)
       #
       #original_paths = paths.dup
       #
