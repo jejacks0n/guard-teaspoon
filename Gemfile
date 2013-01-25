@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem "teabag", path: '../teabag'
+gem "teabag", github: 'modeset/teabag'
 
 # guard / used by guard
 gem "guard"

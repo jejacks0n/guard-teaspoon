@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.summary      = "Run Javascript tests with Guard and all the features of Teabag"
 
   s.files        = Dir["{lib}/**/*"] + ["MIT.LICENSE", "README.md"]
-  s.test_files   = Dir["{spec,test}/**/*"]
+  s.test_files   = Dir["{spec}/**/*"]
   s.require_path = "lib"
 
   s.add_dependency "guard"

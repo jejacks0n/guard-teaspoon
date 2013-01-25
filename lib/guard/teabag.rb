@@ -3,8 +3,8 @@ require "guard/guard"
 
 module Guard
   class Teabag < Guard
-    autoload :Runner,    "guard/teabag/runner"
-    autoload :Inspector, "guard/teabag/inspector"
+    autoload :Runner,   "guard/teabag/runner"
+    autoload :Resolver, "guard/teabag/resolver"
 
     attr_accessor :last_failed, :failed_paths, :runner, :inspector
 
@@ -15,12 +15,13 @@ module Guard
         all_after_pass:  true,
         all_on_start:    true,
         keep_failed:     true,
+        formatters:      "clean",
         run_all:         {}
       }.merge(options)
       reload
 
-      @inspector = Inspector.new(@options)
-      @runner    = Runner.new(@options)
+      @resolver = Resolver.new(@options)
+      @runner   = Runner.new(@options)
     end
 
     def start
@@ -43,15 +44,20 @@ module Guard
       @failed_paths = []
     end
 
-    def run_on_changes(paths)
-      @runner.run(paths)
-      #
+    def run_on_changes(original_paths)
+      @resolver.resolve(original_paths)
+
+      @resolver.suites.each do |suite, files|
+        @runner.run(files, suite: suite)
+      end
+
       #original_paths = paths.dup
       #
       #focused = false
       #if last_failed && @options[:focus_on_failed]
-      #  path = './tmp/rspec_guard_result'
+      #  path = './tmp/teabag_guard_result'
       #  if File.exist?(path)
+      #    # todo: this should ask a "resolver" to see if it's a spec or not
       #    single_spec = paths && paths.length == 1 && paths[0].include?("_spec") ? paths[0] : nil
       #    failed_specs = File.open(path) { |file| file.read.split("\n") }
       #
@@ -70,9 +76,7 @@ module Guard
       #    end
       #
       #    # switch focus to the single spec
-      #    if single_spec and failed_specs.length > 0
-      #      focused = true
-      #    end
+      #    focused = true if single_spec and failed_specs.length > 0
       #  end
       #end
       #
@@ -81,26 +85,21 @@ module Guard
       #  add_failed(paths.map{|p| p.split(":")[0]})
       #else
       #  paths += failed_paths if @options[:keep_failed]
-      #  paths  = @inspector.clean(paths).uniq
+      #  paths = @inspector.clean(paths)
       #end
       #
-      #if passed = @runner.run(paths)
-      #  unless focused
-      #    remove_failed(paths)
-      #  end
+      #if @runner.run(paths)
+      #  remove_failed(paths) unless focused
       #
       #  if last_failed && focused
       #    run_on_changes(failed_paths)
-      #    # run all the specs if the run before this one failed
       #  elsif last_failed && @options[:all_after_pass]
       #    @last_failed = false
       #    run_all
       #  end
       #else
       #  @last_failed = true
-      #  unless focused
-      #    add_failed(paths)
-      #  end
+      #  add_failed(paths) unless focused
       #
       #  throw :task_has_failed
       #end

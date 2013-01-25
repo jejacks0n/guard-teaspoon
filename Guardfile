@@ -1,8 +1,9 @@
-guard :teabag, environment: 'spec/dummy/spec/teabag_env.rb' do
+guard :teabag, environment: "spec/dummy/spec/teabag_env.rb" do
   root = "spec/dummy"
 
   # Your implementation files
-  watch(%r{#{root}/app/assets/javascripts/(.*)})
+  watch(%r{#{root}/app/assets/javascripts/(nested/.+).coffee}) { |m| "#{m[1]}_tspec" }
+  watch(%r{#{root}/app/assets/javascripts/(.+).js}) { |m| "#{m[1]}_spec" }
 
   # Jasmine/Mocha
   watch(%r{#{root}/spec/javascripts/(.*)})

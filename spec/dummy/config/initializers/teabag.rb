@@ -51,8 +51,8 @@ Teabag.setup do |config|
 
   # Example suite. Since we're just filtering to files already within the root spec/javascripts, these files will also
   # be run in the default suite -- but can be focused into a more specific suite.
-  #config.suite :targeted do |suite|
-  #  suite.matcher = "spec/javascripts/targeted/*_spec.{js,js.coffee,coffee}"
-  #end
+  config.suite :targeted do |suite|
+    suite.matcher = "spec/javascripts/**/*_tspec.{js,js.coffee,coffee}"
+  end
 
 end if defined?(Teabag) && Teabag.respond_to?(:setup) # let Teabag be undefined outside of development/test/asset groups

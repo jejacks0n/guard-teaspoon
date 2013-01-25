@@ -1,0 +1,10 @@
+guard :teabag do
+  # Your implementation files
+  watch(%r{app/assets/javascripts/(.*)})
+
+  # Jasmine/Mocha
+  watch(%r{spec/javascripts/(.*)})
+
+  # QUnit
+  #watch(%r{test/javascripts/(.*)})
+end
