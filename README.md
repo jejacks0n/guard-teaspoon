@@ -3,11 +3,11 @@ Guard Teabag
 [![Build Status](https://travis-ci.org/modeset/guard-teabag.png)](https://travis-ci.org/modeset/guard-teabag)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/modeset/guard-teabag)
 
-Guard-Teabag allows you to run the [Teabag test runner](https://github.com/modeset/teabag) using [Guard](https://github.com/guard/guard).
+Guard-Teabag allows you to run [Teabag](https://github.com/modeset/teabag) using [Guard](https://github.com/guard/guard).
 
-Teabag is a Javascript test runner built on top of Rails. It can run tests in the browser, or headlessly using PhantomJS or with Selenium WebDriver.
+Teabag is a Javascript test runner built on top of Rails. It can run tests in the browser, or headlessly using PhantomJS or with Selenium WebDriver. We recommend you check out the [installation steps for Teabag](https://github.com/modeset/teabag#installation), and [read about configuration](https://github.com/modeset/teabag#configuration).
 
-With Guard-Teabag you can start up Guard, make changes to your tests or implementation files, and the specs will be run automatically. It behaves very similarly to guard-rspec.
+With Guard-Teabag you can start up Guard, make changes to your tests or implementation files, and the specs will be run automatically using Teabag. It behaves very similarly to guard-rspec.
 
 This project is still experimental...
 
@@ -21,7 +21,7 @@ This project is still experimental...
 
 ## Installation
 
-Add it to your Gemfile. Like Teabag, in most cases you'll want to restrict it to the `:asset`, or `:development, :test` groups.
+Add it to your Gemfile. Like Teabag, in most cases you'll want to restrict it to the `:asset`, or `:development, :test` groups. You may also want to include one of the filesystem gems that [Guard suggests](https://github.com/guard/guard#efficient-filesystem-handling), and in our example we included `rb-fsevent`.
 
 ```ruby
 group :assets do
@@ -31,9 +31,7 @@ group :assets do
 end
 ```
 
-You may also want to include one of the filesystem gems that [Guard suggests](https://github.com/guard/guard#efficient-filesystem-handling), and in our example we included `rb-fsevent`.
-
-We recommend you check out the [installation steps for Teabag](https://github.com/modeset/teabag#installation), and [read about configuration](https://github.com/modeset/teabag#configuration), but basically it boils down to running the generator.
+Install Teabag using the install generator.
 
 ```
 rails generate teabag:install
@@ -48,20 +46,20 @@ bundle exec guard init
 
 ## Usage
 
-To start Guard:
+Start Guard.
 
 ```
 bundle exec guard start
 ```
 
-Make changes to your javascript specs or implementation files and see the tests run.
+Make changes to your javascript specs or implementation files and the appropriate tests will run.
 
 
 ## Configuring Guard
 
 In general this isn't very complicated, but if you have multiple suites setup in Teabag this can get a little complicated -- there's an expectation that you understand what you're doing in regards to using Guard.
 
-This is what the basic Guardfile looks like. It watches any file within your `app/assets/javascripts` path by default and will attempt to resolve the file to a spec. If you're using QUnit, you can change this to be _test instead of _spec, or use js.coffee or coffee for file extensions, and you can use a more advanced regexp for other needs.
+The default Guardfile will watch for any file changes within your `app/assets/javascripts` path and will attempt to resolve those file to a spec. If you're using QUnit, you can change this to be _test instead of _spec, or use js.coffee or coffee for file extensions, and you can use a more advanced regexp for other needs.
 
 Guardfile
 ```ruby
@@ -80,6 +78,10 @@ Guardfile
 guard :teabag, environment: "spec/dummy/spec/teabag_env.rb" do
 end
 ```
+
+### Available Options
+
+...document when this is better hammered out...
 
 
 ## License
