@@ -6,7 +6,7 @@ module Guard
     autoload :Runner,   "guard/teabag/runner"
     autoload :Resolver, "guard/teabag/resolver"
 
-    attr_accessor :last_failed, :failed_paths, :runner, :inspector
+    attr_accessor :runner, :failed_paths, :last_failed
 
     def initialize(watchers = [], options = {})
       super
@@ -21,7 +21,7 @@ module Guard
       reload
 
       @resolver = Resolver.new(@options)
-      @runner   = Runner.new(@options)
+      @runner = Runner.new(@options)
     end
 
     def start

@@ -2,6 +2,8 @@ module Guard
   class Teabag
     class Runner
 
+      attr_accessor :console
+
       def initialize(options = {})
         @options = options
 
@@ -22,6 +24,12 @@ module Guard
       def run(paths = [], options = {})
         return false if paths.empty?
         @console.execute(@options.merge(options), paths)
+      end
+
+      private
+
+      def abort
+        exit(1)
       end
     end
   end

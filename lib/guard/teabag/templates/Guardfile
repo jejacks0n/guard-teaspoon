@@ -1,12 +1,7 @@
 guard :teabag do
-  root = "spec/dummy"
+  # Implementation files
+  watch(%r{app/assets/javascripts/(.+).js}) { |m| "#{m[1]}_spec" }
 
-  # Your implementation files
-  watch(%r{#{root}/app/assets/javascripts/(.*)}) { |m| {source: m[1]} }
-
-  # Jasmine/Mocha
-  watch(%r{#{root}/spec/javascripts/(.*)}) { |m| {spec: m[1]} }
-
-  # QUnit
-  #watch(%r{#{root}/test/javascripts/(.*)}) { |m| {test: m[1]} }
+  # Specs / Helpers
+  watch(%r{spec/javascripts/(.*)})
 end
