@@ -21,9 +21,9 @@ module Guard
         @console.execute(@options.merge(options))
       end
 
-      def run(paths = [], options = {})
-        return false if paths.empty?
-        @console.execute(@options.merge(options), paths)
+      def run(files = [], options = {})
+        return false if files.empty?
+        @console.execute(@options.merge(options), files)
       end
 
       private

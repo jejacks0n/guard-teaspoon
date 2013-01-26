@@ -16,7 +16,8 @@ module Guard
         all_on_start:    true,
         keep_failed:     true,
         formatters:      "clean",
-        run_all:         {}
+        run_all:         {},
+        run_on_changes:  {}
       }.merge(options)
       reload
 
@@ -48,7 +49,7 @@ module Guard
       @resolver.resolve(original_paths)
 
       @resolver.suites.each do |suite, files|
-        @runner.run(files, suite: suite)
+        @runner.run(files, @options[:run_on_changes].merge(suite: suite))
       end
 
       #original_paths = paths.dup

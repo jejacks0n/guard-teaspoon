@@ -22,6 +22,7 @@ describe Guard::Teabag do
         keep_failed:     true,
         formatters:      "clean",
         run_all:         {},
+        run_on_changes:  {},
         other_option:    "foo"
       })
     end

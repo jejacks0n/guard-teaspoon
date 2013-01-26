@@ -51,9 +51,9 @@ describe Guard::Teabag::Runner do
     end
 
     it "calls execute on console" do
-      paths = ["1", "2"]
-      console.should_receive(:execute).with({foo: "bar", baz: "teabag"}, paths)
-      subject.run(paths, baz: "teabag")
+      files = ["file1", "file2"]
+      console.should_receive(:execute).with({foo: "bar", baz: "teabag"}, files)
+      subject.run(files, baz: "teabag")
     end
 
     it "does nothing if there's no paths" do
