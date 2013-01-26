@@ -106,7 +106,7 @@ describe Guard::Teabag do
   describe "#run_on_changes" do
 
     it "needs to be written out fully and tested"
-    
+
   end
 
 end
