@@ -5,3 +5,4 @@ describe "Calculator", ->
 
   it "should add two digits", ->
     expect( subject.add(2,2) ).toBe(4)
+

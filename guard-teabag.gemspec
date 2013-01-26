@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.test_files   = Dir["{spec}/**/*"]
   s.require_path = "lib"
 
-  s.add_dependency "guard"
-  s.add_dependency "teabag"
+  s.add_dependency "guard", ">= 1.6.1"
+  s.add_dependency "teabag", ">= 0.5.3"
 end
