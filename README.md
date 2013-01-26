@@ -1,6 +1,6 @@
 Guard Teabag
 ============
-[![Build Status](https://travis-ci.org/modeset/guard-teabag.png)](https://travis-ci.org/modeset/guard-teabag)
+[![Build Status](https://travis-ci.org/modeset/guard-teabag.png?branch=master)](https://travis-ci.org/modeset/guard-teabag)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/modeset/guard-teabag)
 
 Guard-Teabag allows you to run [Teabag](https://github.com/modeset/teabag) using [Guard](https://github.com/guard/guard).
