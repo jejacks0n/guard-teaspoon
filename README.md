@@ -30,7 +30,7 @@ group :assets do
 end
 ```
 
-You may also want to include one of the filesystem gems that [Guard suggests](https://github.com/guard/guard#efficient-filesystem-handling), and in our example we included the OS X `rb-inotify`.
+You may also want to include one of the filesystem gems that [Guard suggests](https://github.com/guard/guard#efficient-filesystem-handling), and in our example we included `rb-fsevent`.
 
 We recommend you check out the [installation steps for Teabag](https://github.com/modeset/teabag#installation), and [read about configuration](https://github.com/modeset/teabag#configuration), but basically it boils down to running the generator.
 
@@ -60,7 +60,7 @@ Make changes to your javascript specs or implementation files and see the tests 
 
 In general this isn't very complicated, but if you have multiple suites setup in Teabag this can get a little complicated -- there's an expectation that you understand what you're doing in regards to using Guard.
 
-This is what the basic Guardfile looks like. It watches any file within your `app/assets/javascripts` path by default and will attempt to resolve the file to a spec. If you're using QUnit, you can change this to be _test instead of _spec, and you can use a more advanced regexp for other needs.
+This is what the basic Guardfile looks like. It watches any file within your `app/assets/javascripts` path by default and will attempt to resolve the file to a spec. If you're using QUnit, you can change this to be _test instead of _spec, or use js.coffee or coffee for file extensions, and you can use a more advanced regexp for other needs.
 
 Guardfile
 ```ruby
