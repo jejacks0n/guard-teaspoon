@@ -40,7 +40,7 @@ rails generate teabag:install
 Generate the Guardfile that includes the standard Guard-Teabag template.
 
 ```
-bundle exec guard init
+bundle exec guard init teabag
 ```
 
 
