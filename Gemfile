@@ -14,11 +14,11 @@ gem "uglifier"
 gem "sass-rails"
 gem "jquery-rails"
 
-# guard / used by guard
-gem "rb-fsevent", require: false
-gem "rb-inotify", require: false
-
 group :development, :test do
+  # guard / used by guard
+  gem "rb-fsevent"
+  gem "rb-inotify"
+
   gem "rspec-rails"
   gem "capybara"
   gem "aruba"
