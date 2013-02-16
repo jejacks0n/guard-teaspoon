@@ -42,7 +42,7 @@ feature "Full setup of an app that can run guard-teabag", aruba: true do
     type("exit")
 
     # the first time it runs
-    assert_partial_output("Teabag running default suite at http://127.0.0.1:", all_output)
+    assert_partial_output("Teabag running default suite at", all_output)
 
     # when the file has been modified
     assert_partial_output("/teabag/default/?file[]=", all_output)

@@ -48,8 +48,16 @@ module Guard
     def run_on_changes(original_paths)
       @resolver.resolve(original_paths)
 
+      failed = false
       @resolver.suites.each do |suite, files|
-        @runner.run(files, @options[:run_on_changes].merge(suite: suite))
+        failed = @runner.run(files, @options[:run_on_changes].merge(suite: suite))
+      end
+
+      if failed
+        @last_failed = true
+        Notifier.notify("Failed", title: "Teabag Guard", image: :failed)
+      else
+        Notifier.notify("Success", title: "Teabag Guard", image: :success)
       end
 
       #original_paths = paths.dup
