@@ -16,7 +16,7 @@ gem "jquery-rails"
 
 # guard / used by guard
 gem "rb-fsevent", require: false
-gem "rb-inotify" if RUBY_PLATFORM =~ /linux/
+gem "rb-inotify", require: false
 
 group :development, :test do
   gem "rspec-rails"
