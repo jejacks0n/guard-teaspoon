@@ -2,22 +2,22 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require 'guard/teabag/version'
+require 'guard/teaspoon/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name         = "guard-teabag"
-  s.version      = Guard::TeabagVersion::VERSION
+  s.name         = "guard-teaspoon"
+  s.version      = Guard::TeaspoonVersion::VERSION
   s.authors      = ["jejacks0n"]
   s.email        = ["info@modeset.com"]
-  s.homepage     = "https://github.com/modeset/guard-teabag"
-  s.description  = "Guard-Teabag: Guard plugin for Teabag"
-  s.summary      = "Run Javascript tests with Guard and all the features of Teabag"
+  s.homepage     = "https://github.com/modeset/guard-teaspoon"
+  s.description  = "Guard-Teaspoon: Guard plugin for Teaspoon"
+  s.summary      = "Run Javascript tests with Guard and all the features of Teaspoon"
 
   s.files        = Dir["{lib}/**/*"] + ["MIT.LICENSE", "README.md"]
   s.test_files   = Dir["{spec}/**/*"]
   s.require_path = "lib"
 
   s.add_dependency "guard", ">= 1.6.1"
-  s.add_dependency "teabag", ">= 0.5.3"
+  s.add_dependency "teaspoon", ">= 0.5.3"
 end

@@ -1,5 +1,5 @@
 module Guard
-  class Teabag
+  class Teaspoon
     class Runner
 
       attr_accessor :console
@@ -8,11 +8,11 @@ module Guard
         @options = options
 
         begin
-          require "teabag/console"
-          @console = ::Teabag::Console.new(@options)
-        rescue ::Teabag::EnvironmentNotFound => e
-          STDOUT.print "Unable to load Teabag environment in {#{::Teabag::Environment.standard_environments.join(', ')}}.\n"
-          STDOUT.print "Consider using -r path/to/teabag_env\n"
+          require "teaspoon/console"
+          @console = ::Teaspoon::Console.new(@options)
+        rescue ::Teaspoon::EnvironmentNotFound => e
+          STDOUT.print "Unable to load Teaspoon environment in {#{::Teaspoon::Environment.standard_environments.join(', ')}}.\n"
+          STDOUT.print "Consider using -r path/to/teaspoon_env\n"
           abort
         end
       end

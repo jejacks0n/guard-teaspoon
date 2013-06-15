@@ -2,6 +2,7 @@
 .bundle/
 pkg/
 tmp
+tags
 
 spec/dummy/log/*.log
 spec/dummy/tmp/

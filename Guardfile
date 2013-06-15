@@ -1,4 +1,4 @@
-guard :teabag, environment: "spec/dummy/spec/teabag_env.rb" do
+guard :teaspoon, environment: "spec/dummy/spec/teaspoon_env.rb" do
   root = "spec/dummy"
 
   # Your implementation files

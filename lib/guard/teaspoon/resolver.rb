@@ -1,5 +1,5 @@
 module Guard
-  class Teabag
+  class Teaspoon
     class Resolver
 
       attr_accessor :suites
@@ -12,7 +12,7 @@ module Guard
       def resolve(original_paths)
         @suites = {}
         original_paths.uniq.each do |path|
-          if result = ::Teabag::Suite.resolve_spec_for(path)
+          if result = ::Teaspoon::Suite.resolve_spec_for(path)
             suite = @suites[result[:suite]] ||= []
             suite << result[:path]
           end
