@@ -37,8 +37,8 @@ feature "Full setup of an app that can run guard-teaspoon", aruba: true do
 
     run_interactive("bundle exec guard start")
     sleep 5
-    `touch tmp/aruba/testapp/app/assets/javascripts/test.js`
-    sleep 5
+    write_file("app/assets/javascripts/test.js", "foo = 'something else'")
+    sleep 20
     type("exit")
 
     # the first time it runs
