@@ -7,7 +7,7 @@ require "rspec/autorun"
 require "capybara/rails"
 require "aruba/api"
 
-require "guard/teabag"
+require "guard/teaspoon"
 
 Dir[File.expand_path("../support/**/*.rb", __FILE__)].each { |f| require f }
 

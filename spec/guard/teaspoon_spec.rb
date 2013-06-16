@@ -1,20 +1,20 @@
 require "spec_helper"
-require "guard/teabag"
+require "guard/teaspoon"
 
-describe Guard::Teabag do
+describe Guard::Teaspoon do
 
-  subject { Guard::Teabag.new([], {}) }
+  subject { Guard::Teaspoon.new([], {}) }
 
   before do
-    Guard::Teabag::Resolver.stub(:new)
-    Guard::Teabag::Runner.stub(:new)
+    Guard::Teaspoon::Resolver.stub(:new)
+    Guard::Teaspoon::Runner.stub(:new)
   end
 
   describe "#initialize" do
 
     it "merges the options" do
       options = {focus_on_failed: true, other_option: "foo"}
-      subject = Guard::Teabag.new([], options)
+      subject = Guard::Teaspoon.new([], options)
       expect(subject.instance_variable_get(:@options)).to eql({
         focus_on_failed: true,
         all_after_pass:  true,
@@ -28,14 +28,14 @@ describe Guard::Teabag do
     end
 
     it "calls reload" do
-      Guard::Teabag.any_instance.should_receive(:reload)
-      Guard::Teabag.new
+      Guard::Teaspoon.any_instance.should_receive(:reload)
+      Guard::Teaspoon.new
     end
 
     it "creates a resolver, and a runner" do
-      Guard::Teabag::Resolver.should_receive(:new)
-      Guard::Teabag::Runner.should_receive(:new)
-      Guard::Teabag.new
+      Guard::Teaspoon::Resolver.should_receive(:new)
+      Guard::Teaspoon::Runner.should_receive(:new)
+      Guard::Teaspoon.new
     end
 
   end
@@ -48,7 +48,7 @@ describe Guard::Teabag do
     end
 
     it "logs that we're starting" do
-      Guard::UI.should_receive(:info).with("Guard::Teabag is running")
+      Guard::UI.should_receive(:info).with("Guard::Teaspoon is running")
       subject.start
     end
 

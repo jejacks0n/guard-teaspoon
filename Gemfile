@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem "teabag"
+gem "teaspoon"
 
 # used by the dummy application
 gem "rails", ">= 3.2.9"

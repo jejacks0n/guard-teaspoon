@@ -2,9 +2,9 @@ require "guard"
 require "guard/guard"
 
 module Guard
-  class Teabag < Guard
-    autoload :Runner,   "guard/teabag/runner"
-    autoload :Resolver, "guard/teabag/resolver"
+  class Teaspoon < Guard
+    autoload :Runner,   "guard/teaspoon/runner"
+    autoload :Resolver, "guard/teaspoon/resolver"
 
     attr_accessor :runner, :failed_paths, :last_failed
 
@@ -26,7 +26,7 @@ module Guard
     end
 
     def start
-      UI.info "Guard::Teabag is running"
+      UI.info "Guard::Teaspoon is running"
       run_all if @options[:all_on_start]
     end
 
@@ -55,16 +55,16 @@ module Guard
 
       if failed
         @last_failed = true
-        Notifier.notify("Failed", title: "Teabag Guard", image: :failed)
+        Notifier.notify("Failed", title: "Teaspoon Guard", image: :failed)
       else
-        Notifier.notify("Success", title: "Teabag Guard", image: :success)
+        Notifier.notify("Success", title: "Teaspoon Guard", image: :success)
       end
 
       #original_paths = paths.dup
       #
       #focused = false
       #if last_failed && @options[:focus_on_failed]
-      #  path = './tmp/teabag_guard_result'
+      #  path = './tmp/teaspoon_guard_result'
       #  if File.exist?(path)
       #    # todo: this should ask a "resolver" to see if it's a spec or not
       #    single_spec = paths && paths.length == 1 && paths[0].include?("_spec") ? paths[0] : nil
