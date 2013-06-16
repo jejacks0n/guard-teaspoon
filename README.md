@@ -1,7 +1,7 @@
 Guard Teaspoon
-============
+==============
 [![Build Status](https://travis-ci.org/modeset/guard-teaspoon.png?branch=master)](https://travis-ci.org/modeset/guard-teaspoon)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/modeset/guard-teaspoon)
+[![Code Climate](https://codeclimate.com/github/modeset/guard-teaspoon.png)](https://codeclimate.com/github/modeset/guard-teaspoon)
 
 Guard-Teaspoon allows you to run [Teaspoon](https://github.com/modeset/teaspoon) using [Guard](https://github.com/guard/guard).
 

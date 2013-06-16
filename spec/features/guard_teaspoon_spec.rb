@@ -29,10 +29,10 @@ feature "Full setup of an app that can run guard-teaspoon", aruba: true do
 
     write_file("app/assets/javascripts/test.js", "foo = 'something'")
     write_file "spec/javascripts/test_spec.js", <<-JAVASCRIPT
-    // require application
-    describe("Application", function() {
-      it("tests", function() { expect(true).toBe(true) })
-    });
+      // require application
+      describe("Application", function() {
+        it("tests", function() { expect(true).toBe(true) })
+      });
     JAVASCRIPT
 
     run_interactive("bundle exec guard start")

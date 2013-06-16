@@ -1,4 +1,4 @@
-guard :teabag do
+guard :teaspoon do
   # Implementation files
   watch(%r{app/assets/javascripts/(.+).js}) { |m| "#{m[1]}_spec" }
 
