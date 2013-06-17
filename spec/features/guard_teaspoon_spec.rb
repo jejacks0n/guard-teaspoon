@@ -24,6 +24,7 @@ feature "Full setup of an app that can run guard-teaspoon", aruba: true do
   end
 
   scenario "allows running guard and will notice file changes" do
+    pending if ENV['SKIP_SOME_FEATURES']
     run_simple("bundle exec rails g teaspoon:install")
     run_simple("bundle exec guard init")
 
