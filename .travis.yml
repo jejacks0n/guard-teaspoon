@@ -1,5 +1,4 @@
 rvm:
   - 1.9.3
 env:
-  - PHANTOMJS_BIN=phantomjs
-  - SKIP_SOME_FEATURES=true
+  - PHANTOMJS_BIN=phantomjs SKIP_SOME_FEATURES=true
