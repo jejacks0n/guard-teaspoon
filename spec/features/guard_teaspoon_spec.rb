@@ -46,7 +46,7 @@ feature "Full setup of an app that can run guard-teaspoon", aruba: true do
     assert_partial_output("Teaspoon running default suite at", all_output)
 
     # when the file has been modified
-    assert_partial_output("/teaspoon/default/?file[]=", all_output)
+    assert_partial_output("/teaspoon/default?file[]=", all_output)
     assert_partial_output("tmp/aruba/testapp/spec/javascripts/test_spec.js", all_output)
   end
 end
