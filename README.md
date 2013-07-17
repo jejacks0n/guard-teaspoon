@@ -64,8 +64,8 @@ The default Guardfile will watch for any file changes within your `app/assets/ja
 Guardfile
 ```ruby
 guard :teaspoon do
-  watch(%r{app/assets/javascripts/(.+).js}) { |m| "#{m[1]}_spec" }
-  watch(%r{/spec/javascripts/(.*)})
+  watch(%r{^app/assets/javascripts/(.+).js}) { |m| "#{m[1]}_spec" }
+  watch(%r{^/spec/javascripts/(.*)})
 end
 ```
 
