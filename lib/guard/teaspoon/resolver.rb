@@ -15,6 +15,7 @@ module Guard
           if result = ::Teaspoon::Suite.resolve_spec_for(path)
             suite = @suites[result[:suite]] ||= []
             suite << result[:path]
+            @suites[result[:suite]] = suite.flatten
           end
         end
       end

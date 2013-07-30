@@ -67,7 +67,7 @@ describe Guard::Teaspoon do
 
   describe "#run_all" do
 
-    let(:runner) { mock(run_all: nil) }
+    let(:runner) { double(run_all: nil) }
 
     before do
       subject.runner = runner
