@@ -23,6 +23,13 @@ describe Guard::Teaspoon::Resolver do
       expect(subject.suites).to eq({"default" => ["foo", "bar"], "other" => ["baz"]})
     end
 
+    it "resolves directories" do
+      paths = ["spec/javascripts/my_test_spec.js", "spec/javascripts/my_other_test_spec.js"]
+      Teaspoon::Suite.stub(:resolve_spec_for).and_return(suite: 'default', path: paths)
+      subject.resolve([ 'spec/javascripts' ])
+      expect(subject.suites).to eq({"default" => paths})
+    end
+
   end
 
 end

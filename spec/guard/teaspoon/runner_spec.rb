@@ -27,7 +27,7 @@ describe Guard::Teaspoon::Runner do
 
   describe "#run_all" do
 
-    let(:console) { mock(execute: nil) }
+    let(:console) { double(execute: nil) }
 
     before do
       subject.console = console
@@ -43,7 +43,7 @@ describe Guard::Teaspoon::Runner do
 
   describe "#run" do
 
-    let(:console) { mock(execute: nil) }
+    let(:console) { double(execute: nil) }
 
     before do
       subject.console = console
