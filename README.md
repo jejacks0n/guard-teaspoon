@@ -65,7 +65,7 @@ Guardfile
 ```ruby
 guard :teaspoon do
   watch(%r{^app/assets/javascripts/(.+).js}) { |m| "#{m[1]}_spec" }
-  watch(%r{^/spec/javascripts/(.*)})
+  watch(%r{^spec/javascripts/(.*)})
 end
 ```
 
