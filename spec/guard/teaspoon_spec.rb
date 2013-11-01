@@ -3,7 +3,7 @@ require "guard/teaspoon"
 
 describe Guard::Teaspoon do
 
-  subject { Guard::Teaspoon.new([], {}) }
+  subject { Guard::Teaspoon.new({}) }
 
   before do
     Guard::Teaspoon::Resolver.stub(:new)
@@ -11,10 +11,9 @@ describe Guard::Teaspoon do
   end
 
   describe "#initialize" do
-
     it "merges the options" do
       options = {focus_on_failed: true, other_option: "foo"}
-      subject = Guard::Teaspoon.new([], options)
+      subject = Guard::Teaspoon.new(options)
       expect(subject.instance_variable_get(:@options)).to eql({
         focus_on_failed: true,
         all_after_pass:  true,
@@ -26,25 +25,23 @@ describe Guard::Teaspoon do
         other_option:    "foo"
       })
     end
+  end
+
+  describe "#start" do
+    before do
+      subject.stub(:run_all)
+      Guard::UI.stub(:info)
+    end
 
     it "calls reload" do
       Guard::Teaspoon.any_instance.should_receive(:reload)
-      Guard::Teaspoon.new
+      subject.start
     end
 
     it "creates a resolver, and a runner" do
       Guard::Teaspoon::Resolver.should_receive(:new)
       Guard::Teaspoon::Runner.should_receive(:new)
-      Guard::Teaspoon.new
-    end
-
-  end
-
-  describe "#start" do
-
-    before do
-      subject.stub(:run_all)
-      Guard::UI.stub(:info)
+      subject.start
     end
 
     it "logs that we're starting" do
@@ -66,7 +63,6 @@ describe Guard::Teaspoon do
   end
 
   describe "#run_all" do
-
     let(:runner) { double(run_all: nil) }
 
     before do
