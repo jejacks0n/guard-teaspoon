@@ -12,17 +12,17 @@ describe Guard::Teaspoon do
 
   describe "#initialize" do
     it "merges the options" do
-      options = {focus_on_failed: true, other_option: "foo"}
+      options = { focus_on_failed: true, other_option: 'foo' }
       subject = Guard::Teaspoon.new(options)
       expect(subject.instance_variable_get(:@options)).to eql({
-        focus_on_failed: true,
-        all_after_pass:  true,
-        all_on_start:    true,
-        keep_failed:     true,
-        formatters:      "clean",
-        run_all:         {},
-        run_on_changes:  {},
-        other_option:    "foo"
+        focus_on_failed:      true,
+        all_after_pass:       true,
+        all_on_start:         true,
+        keep_failed:          true,
+        formatters:           'clean',
+        run_all:              {},
+        run_on_modifications: {},
+        other_option:         'foo'
       })
     end
   end

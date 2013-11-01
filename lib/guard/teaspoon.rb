@@ -11,13 +11,13 @@ module Guard
     def initialize(options = {})
       super
       @options = {
-        focus_on_failed: false,
-        all_after_pass:  true,
-        all_on_start:    true,
-        keep_failed:     true,
-        formatters:      "clean",
-        run_all:         {},
-        run_on_changes:  {}
+        focus_on_failed:      false,
+        all_after_pass:       true,
+        all_on_start:         true,
+        keep_failed:          true,
+        formatters:           'clean',
+        run_all:              {},
+        run_on_modifications: {}
       }.merge(options)
     end
 
@@ -44,12 +44,12 @@ module Guard
       @failed_paths = []
     end
 
-    def run_on_changes(original_paths)
+    def run_on_modifications(original_paths)
       @resolver.resolve(original_paths)
 
       failed = false
       @resolver.suites.each do |suite, files|
-        failed = @runner.run(files, @options[:run_on_changes].merge(suite: suite))
+        failed = @runner.run(files, @options[:run_on_modifications].merge(suite: suite))
       end
 
       if failed

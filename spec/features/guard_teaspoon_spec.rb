@@ -25,7 +25,7 @@ feature "Full setup of an app that can run guard-teaspoon", aruba: true do
 
   scenario "allows running guard and will notice file changes" do
     pending "seems broken in rails 4"
-    pending if ENV['SKIP_SOME_FEATURES']
+    pending if ENV['CI']
     run_simple("bundle exec rails g teaspoon:install")
     run_simple("bundle exec guard init")
 
