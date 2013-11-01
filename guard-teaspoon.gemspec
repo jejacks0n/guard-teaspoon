@@ -13,12 +13,12 @@ Gem::Specification.new do |s|
   s.homepage     = "https://github.com/modeset/guard-teaspoon"
   s.description  = "Guard-Teaspoon: Guard plugin for Teaspoon"
   s.summary      = "Run Javascript tests with Guard and all the features of Teaspoon"
-  s.license     = 'MIT'
+  s.license      = 'MIT'
 
   s.files        = Dir["{lib}/**/*"] + ["MIT.LICENSE", "README.md"]
   s.test_files   = Dir["{spec}/**/*"]
   s.require_path = "lib"
 
-  s.add_dependency 'guard', '~> 2.2'
-  s.add_dependency 'teaspoon', ">= 0.7.7"
+  s.add_runtime_dependency 'guard',    '~> 2.2'
+  s.add_runtime_dependency 'teaspoon', '>= 0.7.7'
 end
