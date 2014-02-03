@@ -1,5 +1,5 @@
 module Guard
   module TeaspoonVersion
-    VERSION = "0.0.4"
+    VERSION = '1.0.0'
   end
 end

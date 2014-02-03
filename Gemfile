@@ -18,10 +18,6 @@ gem "jbuilder", require: false
 gem 'sdoc', require: false
 
 group :development, :test do
-  # guard / used by guard
-  gem "rb-fsevent"
-  gem "rb-inotify"
-
   gem "rspec-rails"
   gem "capybara"
   gem "aruba"

@@ -1,5 +1,6 @@
 Guard Teaspoon
 ==============
+[![Gem Version](https://badge.fury.io/rb/guard-teaspoon.png)](http://badge.fury.io/rb/guard-teaspoon)
 [![Build Status](https://travis-ci.org/modeset/guard-teaspoon.png?branch=master)](https://travis-ci.org/modeset/guard-teaspoon)
 [![Code Climate](https://codeclimate.com/github/modeset/guard-teaspoon.png)](https://codeclimate.com/github/modeset/guard-teaspoon)
 
@@ -21,13 +22,12 @@ This project is still experimental...
 
 ## Installation
 
-Add it to your Gemfile. Like Teaspoon, in most cases you'll want to restrict it to the `:asset`, or `:development, :test` groups. You may also want to include one of the filesystem gems that [Guard suggests](https://github.com/guard/guard#efficient-filesystem-handling), and in our example we included `rb-fsevent`.
+Add it to your Gemfile. Like Teaspoon, in most cases you'll want to restrict it to the `:asset`, or `:development, :test` groups.
 
 ```ruby
 group :assets do
   gem "teaspoon"
   gem "guard-teaspoon"
-  gem "rb-fsevent" # used by guard
 end
 ```
 
