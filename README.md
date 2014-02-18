@@ -1,4 +1,4 @@
-Guard Teaspoon
+Guard-Teaspoon
 ==============
 
 [![Gem Version](https://badge.fury.io/rb/guard-teaspoon.png)](http://badge.fury.io/rb/guard-teaspoon)
@@ -12,20 +12,16 @@ Guard Teaspoon
 
 Guard-Teaspoon allows you to run [Teaspoon](https://github.com/modeset/teaspoon) using [Guard](https://github.com/guard/guard).
 
-Teaspoon is a Javascript test runner built on top of Rails. It can run tests in the browser, or headlessly using PhantomJS or with Selenium WebDriver. We recommend you check out the [installation steps for Teaspoon](https://github.com/modeset/teaspoon#installation), and [read about configuration](https://github.com/modeset/teaspoon#configuration).
+Teaspoon is a Javascript test runner built for Rails. It runs test in the browser or headless using PhantomJS or Selenium WebDriver. We recommend you check out the [installation steps for Teaspoon](https://github.com/modeset/teaspoon#installation), and [read about the configuration](https://github.com/modeset/teaspoon#configuration).
 
 With Guard-Teaspoon you can start up Guard, make changes to your tests or implementation files, and the specs will be run automatically using Teaspoon. It behaves very similarly to guard-rspec.
 
-This project is still experimental...
+This project is still experimental, but is being worked on.
 
 
 ## Developer Notice
 
-This project will be getting attention shortly, but it will currently be broken (I assume) with Teaspoon 0.8.
-
-The version of guard-teaspoon will be bumped up to 0.8 as well and those will stay in sync from now on so that it's clear which versions work together well. It's an oversight that shouldn've been corrected earlier.
-
-This project will transition away from being experiemental and will get more attention.
+The version of guard-teaspoon will be bumped up to 0.8 to match what is current in teaspoon. The versions will stay in sync (at least in terms of a minor version) from now on so that it's clear which versions work together well.
 
 
 ## Table of Contents
@@ -37,10 +33,10 @@ This project will transition away from being experiemental and will get more att
 
 ## Installation
 
-Add it to your Gemfile. Like Teaspoon, in most cases you'll want to restrict it to the `:asset`, or `:development, :test` groups.
+Add it to your Gemfile. Like Teaspoon, in most cases you'll want to restrict it to the `:development, :test` groups.
 
 ```ruby
-group :assets do
+group :development, :test do
   gem "teaspoon"
   gem "guard-teaspoon"
 end
@@ -74,7 +70,7 @@ Make changes to your javascript specs or implementation files and the appropriat
 
 In general this isn't very complicated, but if you have multiple suites setup in Teaspoon this can get a little complicated -- there's an expectation that you understand what you're doing in regards to using Guard.
 
-The default Guardfile will watch for any file changes within your `app/assets/javascripts` path and will attempt to resolve those file to a spec. If you're using QUnit, you can change this to be _test instead of _spec, or use js.coffee or coffee for file extensions, and you can use a more advanced regexp for other needs.
+The default Guardfile will watch for any file changes within your `app/assets/javascripts` path and will attempt to resolve those file to a spec. If you're using QUnit, you can change this to be `_test` instead of `_spec`, or use js.coffee or coffee for file extensions, and you can use a more advanced regexp for other needs.
 
 Guardfile
 ```ruby
