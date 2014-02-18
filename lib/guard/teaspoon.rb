@@ -30,12 +30,14 @@ module Guard
     end
 
     def run_all
-      passed = @runner.run_all(@options[:run_all])
+      failed = @runner.run_all(@options[:run_all])
 
-      unless @last_failed = !passed
-        @failed_paths = []
-      else
+      if failed
+        @last_failed = true
         throw :task_has_failed
+      else
+        @last_failed = false
+        true
       end
     end
 
@@ -55,8 +57,10 @@ module Guard
       if failed
         @last_failed = true
         Notifier.notify("Failed", title: "Teaspoon Guard", image: :failed)
+        throw :task_has_failed
       else
         Notifier.notify("Success", title: "Teaspoon Guard", image: :success)
+        run_all if @last_failed
       end
     end
 
