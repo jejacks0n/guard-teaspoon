@@ -13,6 +13,15 @@ With Guard-Teaspoon you can start up Guard, make changes to your tests or implem
 This project is still experimental...
 
 
+## Developer Notice
+
+This project will be getting attention shortly, but it will currently be broken (I assume) with Teaspoon 0.8.
+
+The version of guard-teaspoon will be bumped up to 0.8 as well and those will stay in sync from now on so that it's clear which versions work together well. It's an oversight that shouldn've been corrected earlier.
+
+This project will transition away from being experiemental and will get more attention.
+
+
 ## Table of Contents
 
 1. [Installation](#installation)
