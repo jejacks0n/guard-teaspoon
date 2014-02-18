@@ -14,7 +14,7 @@ gem "uglifier"
 gem "sass-rails"
 gem "jquery-rails"
 gem "turbolinks", require: false
-gem "jbuilder", require: false
+gem "jbuilder", "~> 1.2", require: false
 gem 'sdoc', require: false
 
 group :development, :test do
