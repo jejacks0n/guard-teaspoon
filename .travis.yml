@@ -1,4 +1,4 @@
 before_script:
-  - 'gem install specific_install && gem specific_install -l https://github.com/modeset/guard-teaspoon.git'
+  - 'gem install specific_install && gem specific_install -l https://github.com/modeset/teaspoon.git'
 rvm:
   - 1.9.3
