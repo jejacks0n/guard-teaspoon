@@ -99,7 +99,7 @@ end
 
 Licensed under the [MIT License](http://creativecommons.org/licenses/MIT/)
 
-Copyright 2012 [Mode Set](https://github.com/modeset)
+Copyright 2014 [Mode Set](https://github.com/modeset)
 
 
 ## Make Code Not War
