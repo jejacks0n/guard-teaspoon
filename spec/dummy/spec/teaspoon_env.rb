@@ -1,28 +1,15 @@
-# This file allows you to override various Teaspoon configuration directives when running from the command line. It is not
-# required from within the Rails environment, so overriding directives that have been defined within the initializer
-# is not possible.
-#
-# Set RAILS_ROOT and load the environment.
-ENV["RAILS_ROOT"] = File.expand_path("../../", __FILE__)
-require File.expand_path("../../config/environment", __FILE__)
+# Set RAILS_ROOT and load the environment if it's not already loaded.
+unless defined?(Rails)
+  ENV["RAILS_ROOT"] = File.expand_path("../../", __FILE__)
+  require File.expand_path("../../config/environment", __FILE__)
+end
 
-# Provide default configuration.
-#
-# You can override various configuration directives defined here by using arguments with the teaspoon command.
-#
-# teaspoon --driver=selenium --suppress-log
-# rake teaspoon DRIVER=selenium SUPPRESS_LOG=false
-Teaspoon.setup do |config|
-  # Driver
-  #config.driver         = "phantomjs" # available: phantomjs, selenium
-  #config.phantomjs_bin  = nil
+Teaspoon.configure do |config|
+  config.suite do |suite|
+    suite.use_framework :jasmine, "1.3.1"
+  end
 
-  # Behaviors
-  #config.server_timeout = 20 # timeout for starting the server
-  #config.fail_fast      = true # abort after the first failing suite
-
-  # Output
-  #config.formatters     = "dot" # available: dot, tap_y, swayze_or_oprah
-  #config.suppress_log   = false # suppress logs coming from console[log/error/debug]
-  #config.color          = true
+  config.suite :targeted do |suite|
+    suite.matcher = "spec/javascripts/**/*_tspec.{js,js.coffee,coffee}"
+  end
 end

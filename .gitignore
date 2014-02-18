@@ -3,6 +3,7 @@
 pkg/
 tmp
 tags
+coverage/
 
 spec/dummy/log/*.log
 spec/dummy/tmp/

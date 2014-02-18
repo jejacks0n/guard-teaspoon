@@ -19,7 +19,6 @@ module Guard
           end
         end
       end
-
     end
   end
 end

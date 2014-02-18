@@ -1,4 +1,4 @@
-language: ruby
+before_script:
+  - 'gem install specific_install && gem specific_install -l git@github.com:modeset/teaspoon.git'
 rvm:
   - 1.9.3
-  - 2.0.0

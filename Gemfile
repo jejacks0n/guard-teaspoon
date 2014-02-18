@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem "teaspoon"
+gem "teaspoon", github: "modeset/teaspoon"
 
 # used by the dummy application
 gem "rails", ">= 4.0.0"
@@ -22,3 +22,6 @@ group :development, :test do
   gem "capybara"
   gem "aruba"
 end
+
+# io services
+gem "coveralls", require: false

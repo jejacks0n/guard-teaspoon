@@ -1,10 +1,10 @@
-require 'guard'
-require 'guard/plugin'
+require "guard"
+require "guard/plugin"
 
 module Guard
   class Teaspoon < Plugin
-    require 'guard/teaspoon/resolver'
-    require 'guard/teaspoon/runner'
+    require "guard/teaspoon/resolver"
+    require "guard/teaspoon/runner"
 
     attr_accessor :runner, :failed_paths, :last_failed
 

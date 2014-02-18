@@ -14,7 +14,6 @@ feature "Full setup of an app that can run guard-teaspoon", aruba: true do
 
   scenario "installing Teaspoon and generating the Guardfile" do
     run_simple("bundle exec rails g teaspoon:install")
-    check_file_presence(["config/initializers/teaspoon.rb"], true)
     check_file_presence(["spec/teaspoon_env.rb"], true)
     check_file_presence(["spec/javascripts/spec_helper.js"], true)
 
