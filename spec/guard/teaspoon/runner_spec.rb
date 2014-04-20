@@ -52,7 +52,7 @@ describe Guard::Teaspoon::Runner do
 
     it "calls execute on console" do
       files = ["file1", "file2"]
-      console.should_receive(:execute).with({foo: "bar", baz: "teaspoon"}, files)
+      console.should_receive(:execute).with({foo: "bar", baz: "teaspoon", files: files})
       subject.run(files, baz: "teaspoon")
     end
 
