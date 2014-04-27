@@ -36,7 +36,7 @@ module Guard
         @last_failed = true
         throw :task_has_failed
       else
-        @last_failed = false
+        reload
         true
       end
     end

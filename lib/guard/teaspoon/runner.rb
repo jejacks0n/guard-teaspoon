@@ -23,7 +23,7 @@ module Guard
 
       def run(files = [], options = {})
         return false if files.empty?
-        @console.execute(@options.merge(options), files)
+        @console.execute(@options.merge(options).merge(files: files))
       end
 
       private

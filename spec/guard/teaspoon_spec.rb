@@ -70,19 +70,19 @@ describe Guard::Teaspoon do
     end
 
     it "calls #run_all on the runner" do
-      runner.should_receive(:run_all).and_return(true)
+      runner.should_receive(:run_all).and_return(false)
       subject.run_all
     end
 
     it "resets failed_paths if all tests passed" do
       subject.failed_paths = ["1", "2"]
-      runner.should_receive(:run_all).and_return(true)
+      runner.should_receive(:run_all).and_return(false)
       subject.run_all
       expect(subject.failed_paths).to eq([])
     end
 
     it "throws :task_has_failed if the tests didn't pass" do
-      runner.should_receive(:run_all).and_return(false)
+      runner.should_receive(:run_all).and_return(true)
       expect { subject.run_all }.to raise_error(ArgumentError)
     end
 
