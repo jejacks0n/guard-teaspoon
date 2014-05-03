@@ -70,19 +70,19 @@ describe Guard::Teaspoon do
     end
 
     it "calls #run_all on the runner" do
-      runner.should_receive(:run_all).and_return(false)
+      runner.should_receive(:run_all).and_return(true)
       subject.run_all
     end
 
     it "resets failed_paths if all tests passed" do
       subject.failed_paths = ["1", "2"]
-      runner.should_receive(:run_all).and_return(false)
+      runner.should_receive(:run_all).and_return(true)
       subject.run_all
       expect(subject.failed_paths).to eq([])
     end
 
     it "throws :task_has_failed if the tests didn't pass" do
-      runner.should_receive(:run_all).and_return(true)
+      runner.should_receive(:run_all).and_return(false)
       expect { subject.run_all }.to raise_error(ArgumentError)
     end
 
@@ -125,8 +125,8 @@ describe Guard::Teaspoon do
       resolver.should_receive(:resolve).with(original_paths)
       resolver.should_receive(:suites).and_return({"default" => ["foo", "bar"], "another_suite" => ["a_spec"]})
 
-      runner.should_receive(:run).with(["foo", "bar"], {suite: "default"}).and_return(false)
-      runner.should_receive(:run).with(["a_spec"], {suite: "another_suite"}).and_return(false)
+      runner.should_receive(:run).with(["foo", "bar"], {suite: "default"}).and_return(true)
+      runner.should_receive(:run).with(["a_spec"], {suite: "another_suite"}).and_return(true)
 
       subject.run_on_modifications(original_paths)
     end
@@ -137,7 +137,7 @@ describe Guard::Teaspoon do
       resolver.should_receive(:resolve)
       resolver.should_receive(:suites).and_return({"default" => ["foo", "bar"]})
 
-      runner.should_receive(:run).and_return(true)
+      runner.should_receive(:run).and_return(false)
 
       expect { subject.run_on_modifications(original_paths) }.to throw_symbol(:task_has_failed)
       expect(subject.last_failed).to eq(true)
@@ -149,8 +149,8 @@ describe Guard::Teaspoon do
       resolver.should_receive(:resolve)
       resolver.should_receive(:suites).and_return({"default" => ["foo", "bar"]})
 
-      runner.should_receive(:run).and_return(false)
-      runner.should_receive(:run_all)
+      runner.should_receive(:run).and_return(true)
+      runner.should_receive(:run_all).and_return(true)
 
       subject.run_on_modifications(original_paths)
     end
