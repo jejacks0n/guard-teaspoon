@@ -16,6 +16,7 @@ gem "jquery-rails"
 gem "turbolinks", require: false
 gem "jbuilder", "~> 2.0", require: false
 gem 'sdoc', require: false
+gem "spring"
 
 group :development, :test do
   gem "rspec-rails"
