@@ -70,19 +70,19 @@ describe Guard::Teaspoon do
     end
 
     it "calls #run_all on the runner" do
-      runner.should_receive(:run_all).and_return(false)
+      runner.should_receive(:run_all).and_return(true)
       subject.run_all
     end
 
     it "resets failed_paths if all tests passed" do
       subject.failed_paths = ["1", "2"]
-      runner.should_receive(:run_all).and_return(false)
+      runner.should_receive(:run_all).and_return(true)
       subject.run_all
       expect(subject.failed_paths).to eq([])
     end
 
     it "throws :task_has_failed if the tests didn't pass" do
-      runner.should_receive(:run_all).and_return(true)
+      runner.should_receive(:run_all).and_return(false)
       expect { subject.run_all }.to raise_error(ArgumentError)
     end
 
@@ -100,9 +100,60 @@ describe Guard::Teaspoon do
 
   end
 
-  describe "#run_on_changes" do
+  describe "#run_on_modifications" do
+    let(:resolver) { double() }
+    let(:runner) { double() }
+    let(:original_paths) { ["a_spec"] }
 
-    it "needs to be written out fully and tested"
+    before do
+      subject.resolver = resolver
+      subject.runner = runner
+    end
+
+    it "does nothing if the spec paths cant be resolved" do
+      subject.last_failed = false
+
+      resolver.should_receive(:resolve).with(original_paths)
+      resolver.should_receive(:suites).and_return([])
+
+      subject.run_on_modifications(original_paths)
+    end
+
+    it "runs every suite that is resolved to a spec" do
+      subject.last_failed = false
+
+      resolver.should_receive(:resolve).with(original_paths)
+      resolver.should_receive(:suites).and_return({"default" => ["foo", "bar"], "another_suite" => ["a_spec"]})
+
+      runner.should_receive(:run).with(["foo", "bar"], {suite: "default"}).and_return(true)
+      runner.should_receive(:run).with(["a_spec"], {suite: "another_suite"}).and_return(true)
+
+      subject.run_on_modifications(original_paths)
+    end
+
+    it "sets last_failed to false and throws :task_has_failed if a spec fails" do
+      subject.last_failed = false
+
+      resolver.should_receive(:resolve)
+      resolver.should_receive(:suites).and_return({"default" => ["foo", "bar"]})
+
+      runner.should_receive(:run).and_return(false)
+
+      expect { subject.run_on_modifications(original_paths) }.to throw_symbol(:task_has_failed)
+      expect(subject.last_failed).to eq(true)
+    end
+
+    it "if all specs pass, it calls run_all if the previous run was unsuccessful" do
+      subject.last_failed = true
+
+      resolver.should_receive(:resolve)
+      resolver.should_receive(:suites).and_return({"default" => ["foo", "bar"]})
+
+      runner.should_receive(:run).and_return(true)
+      runner.should_receive(:run_all).and_return(true)
+
+      subject.run_on_modifications(original_paths)
+    end
 
   end
 

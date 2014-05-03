@@ -6,7 +6,7 @@ module Guard
     require "guard/teaspoon/resolver"
     require "guard/teaspoon/runner"
 
-    attr_accessor :runner, :failed_paths, :last_failed
+    attr_accessor :runner, :resolver, :failed_paths, :last_failed
 
     def initialize(options = {})
       super
@@ -30,14 +30,14 @@ module Guard
     end
 
     def run_all
-      failed = @runner.run_all(@options[:run_all])
+      passed = @runner.run_all(@options[:run_all])
 
-      if failed
-        @last_failed = true
-        throw :task_has_failed
-      else
+      if passed
         reload
         true
+      else
+        @last_failed = true
+        throw :task_has_failed
       end
     end
 
@@ -51,7 +51,7 @@ module Guard
 
       failed = false
       @resolver.suites.each do |suite, files|
-        failed = @runner.run(files, @options[:run_on_modifications].merge(suite: suite))
+        failed = true unless @runner.run(files, @options[:run_on_modifications].merge(suite: suite))
       end
 
       if failed

@@ -11,11 +11,12 @@ gem "coffee-rails"
 # used by test rails apps
 gem "sqlite3"
 gem "uglifier"
-gem "sass-rails"
+gem "sass-rails", "~> 4.0.2"
 gem "jquery-rails"
 gem "turbolinks", require: false
-gem "jbuilder", "~> 1.2", require: false
+gem "jbuilder", "~> 2.0", require: false
 gem 'sdoc', require: false
+gem "spring"
 
 group :development, :test do
   gem "rspec-rails"
