@@ -6,7 +6,7 @@ module Guard
     require "guard/teaspoon/resolver"
     require "guard/teaspoon/runner"
 
-    attr_accessor :runner, :failed_paths, :last_failed
+    attr_accessor :runner, :resolver, :failed_paths, :last_failed
 
     def initialize(options = {})
       super
