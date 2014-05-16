@@ -33,9 +33,11 @@ module Guard
       passed = @runner.run_all(@options[:run_all])
 
       if passed
+        ::Guard::Notifier.notify("Success", title: "Teaspoon Guard", image: :success)
         reload
         true
       else
+        ::Guard::Notifier.notify("Failed", title: "Teaspoon Guard", image: :failed)
         @last_failed = true
         throw :task_has_failed
       end
