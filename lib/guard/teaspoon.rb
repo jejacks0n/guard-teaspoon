@@ -56,10 +56,10 @@ module Guard
 
       if failed
         @last_failed = true
-        Notifier.notify("Failed", title: "Teaspoon Guard", image: :failed)
+        ::Guard::Notifier.notify("Failed", title: "Teaspoon Guard", image: :failed)
         throw :task_has_failed
       else
-        Notifier.notify("Success", title: "Teaspoon Guard", image: :success)
+        ::Guard::Notifier.notify("Success", title: "Teaspoon Guard", image: :success)
         run_all if @last_failed
       end
     end
