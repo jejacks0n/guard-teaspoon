@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Guard::TeaspoonVersion::VERSION
   s.authors     = ["jejacks0n", "jayzes", "jedschneider"]
   s.email       = ["info@modeset.com"]
-  s.homepage    = "https://rubygems.org/gems/guard-teaspoon"
+  s.homepage    = "https://github.com/modeset/guard-teaspoon"
   s.summary     = "Guard plugin for Teaspoon"
   s.description = "Guard::Teaspoon automatically runs your Javascript tests with all the features of Teaspoon."
   s.license     = "MIT"
