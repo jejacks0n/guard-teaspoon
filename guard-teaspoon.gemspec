@@ -18,5 +18,6 @@ Gem::Specification.new do |s|
   s.test_files  = `git ls-files -- {spec,test}/*`.split("\n")
 
   s.add_dependency "guard", "~> 2.2"
+  s.add_dependency "guard-compat", "~> 1.2"
   s.add_dependency "teaspoon", ">= 0.8.0"
 end

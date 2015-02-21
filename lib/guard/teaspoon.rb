@@ -1,5 +1,4 @@
-require "guard"
-require "guard/plugin"
+require "guard/compat/plugin"
 
 module Guard
   class Teaspoon < Plugin
@@ -30,8 +29,6 @@ module Guard
     end
 
     def run_all
-      # run all tests instead of running only the last run tests
-      @options.delete :files
       passed = @runner.run_all(@options[:run_all])
 
       if passed
@@ -71,7 +68,7 @@ module Guard
     private
 
     def notify(status)
-      ::Guard::Notifier.notify(status.to_s.capitalize, title: "Teaspoon Guard", image: status)
+      Guard::Compat::UI.notify(status.to_s.capitalize, title: "Teaspoon Guard", image: status)
     end
 
     def remove_failed(paths)
