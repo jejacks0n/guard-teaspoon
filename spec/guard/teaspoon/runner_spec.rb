@@ -39,6 +39,13 @@ describe Guard::Teaspoon::Runner do
       subject.run_all(baz: "teaspoon")
     end
 
+    it 'removes previously set files so that all files are run' do
+      subject = Guard::Teaspoon::Runner.new(files: ["file1", "file2"], baz: "teaspoon")
+      subject.console = console
+      console.should_receive(:execute).with(foo: "bar", baz: "teaspoon")
+      subject.run_all(foo: "bar")
+    end
+
   end
 
   describe "#run" do

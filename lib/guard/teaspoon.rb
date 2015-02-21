@@ -29,8 +29,6 @@ module Guard
     end
 
     def run_all
-      # run all tests instead of running only the last run tests
-      @options.delete :files
       passed = @runner.run_all(@options[:run_all])
 
       if passed
