@@ -9,7 +9,7 @@ feature "Full setup of an app that can run guard-teaspoon", aruba: true do
     append_to_file("Gemfile", "gem 'teaspoon'" + "\n")
     append_to_file("Gemfile", "gem 'guard-teaspoon', path: '#{File.expand_path('../../../', __FILE__)}'" + "\n")
     append_to_file("Gemfile", "gem 'rb-fsevent'" + "\n")
-    run_simple("bundle install --local")
+    run_simple("bundle install")
   end
 
   scenario "installing Teaspoon and generating the Guardfile" do
@@ -49,4 +49,5 @@ feature "Full setup of an app that can run guard-teaspoon", aruba: true do
     assert_partial_output("/teaspoon/default?file[]=", all_output)
     assert_partial_output("tmp/aruba/testapp/spec/javascripts/test_spec.js", all_output)
   end
+
 end

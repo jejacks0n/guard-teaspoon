@@ -3,9 +3,10 @@ Guard-Teaspoon
 
 [![Gem Version](https://badge.fury.io/rb/guard-teaspoon.png)](http://badge.fury.io/rb/guard-teaspoon)
 [![Dependency Status](https://gemnasium.com/modeset/guard-teaspoon.png)](https://gemnasium.com/modeset/guard-teaspoon)
-[![Build Status](https://travis-ci.org/modeset/guard-teaspoon.png?branch=master)](https://travis-ci.org/modeset/guard-teaspoon)
-[![Code Climate](https://codeclimate.com/github/modeset/guard-teaspoon.png)](https://codeclimate.com/github/modeset/guard-teaspoon)
-[![Coverage Status](https://coveralls.io/repos/modeset/guard-teaspoon/badge.png?branch=master)](https://coveralls.io/r/modeset/guard-teaspoon?branch=master)
+[![Build Status](https://img.shields.io/travis/modeset/guard-teaspoon.svg)](https://travis-ci.org/modeset/guard-teaspoon)
+[![Code Climate](https://codeclimate.com/github/modeset/guard-teaspoon/badges/gpa.svg)](https://codeclimate.com/github/modeset/guard-teaspoon)
+[![Test Coverage](https://codeclimate.com/github/modeset/guard-teaspoon/badges/coverage.svg)](https://codeclimate.com/github/modeset/guard-teaspoon)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 <img src="https://raw.github.com/modeset/teaspoon/master/screenshots/logo_big.png" alt="Logo by Morgan Keys" align="right" />
 <sup>Logo by [Morgan Keys](http://www.morganrkeys.com/)</sup>
@@ -17,11 +18,6 @@ Teaspoon is a Javascript test runner built for Rails. It runs test in the browse
 With Guard-Teaspoon you can start up Guard, make changes to your tests or implementation files, and the specs will be run automatically using Teaspoon. It behaves very similarly to guard-rspec.
 
 This project is still experimental, but is being worked on.
-
-
-## Developer Notice
-
-The version of guard-teaspoon will be bumped up to 0.8 to match what is current in teaspoon. The versions will stay in sync (at least in terms of a minor version) from now on so that it's clear which versions work together well.
 
 
 ## Table of Contents
@@ -37,7 +33,6 @@ Add it to your Gemfile. Like Teaspoon, in most cases you'll want to restrict it 
 
 ```ruby
 group :development, :test do
-  gem "teaspoon"
   gem "guard-teaspoon"
 end
 ```

@@ -1,4 +1,4 @@
-require "guard/compat/plugin"
+require "guard/plugin"
 
 module Guard
   class Teaspoon < Plugin
@@ -68,7 +68,7 @@ module Guard
     private
 
     def notify(status)
-      Guard::Compat::UI.notify(status.to_s.capitalize, title: "Teaspoon Guard", image: status)
+      UI.info(status.to_s.capitalize, title: "Teaspoon Guard", image: status)
     end
 
     def remove_failed(paths)
