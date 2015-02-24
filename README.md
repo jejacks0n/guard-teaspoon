@@ -13,7 +13,9 @@ Guard-Teaspoon
 
 Guard-Teaspoon allows you to run [Teaspoon](https://github.com/modeset/teaspoon) using [Guard](https://github.com/guard/guard).
 
-Teaspoon is a Javascript test runner built for Rails. It runs test in the browser or headless using PhantomJS or Selenium WebDriver. We recommend you check out the [installation steps for Teaspoon](https://github.com/modeset/teaspoon#installation), and [read about the configuration](https://github.com/modeset/teaspoon#configuration).
+We recommend you first check out the [installation steps for Teaspoon](https://github.com/modeset/teaspoon#installation), and [read about the configuration](https://github.com/modeset/teaspoon#configuration).
+
+[![Join the chat at https://gitter.im/modeset/teaspoon](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/modeset/teaspoon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 With Guard-Teaspoon you can start up Guard, make changes to your tests or implementation files, and the specs will be run automatically using Teaspoon. It behaves very similarly to guard-rspec.
 

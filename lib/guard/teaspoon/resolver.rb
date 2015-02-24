@@ -1,12 +1,11 @@
 module Guard
   class Teaspoon
     class Resolver
-
       attr_accessor :suites
 
       def initialize(options = {})
         @options = options
-        #@excluded = Dir[@options[:exclude].to_s]
+        # @excluded = Dir[@options[:exclude].to_s]
       end
 
       def resolve(original_paths)

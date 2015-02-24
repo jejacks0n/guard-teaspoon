@@ -1,7 +1,6 @@
 module Guard
   class Teaspoon
     class Runner
-
       attr_accessor :console
 
       def initialize(options = {})
@@ -10,8 +9,9 @@ module Guard
         begin
           require "teaspoon/console"
           @console = ::Teaspoon::Console.new(@options)
-        rescue ::Teaspoon::EnvironmentNotFound => e
-          STDOUT.print "Unable to load Teaspoon environment in {#{::Teaspoon::Environment.standard_environments.join(', ')}}.\n"
+        rescue ::Teaspoon::EnvironmentNotFound
+          environments = ::Teaspoon::Environment.standard_environments.join(", ")
+          STDOUT.print "Unable to load Teaspoon environment in {#{environments}}.\n"
           STDOUT.print "Consider using -r path/to/teaspoon_env\n"
           abort
         end

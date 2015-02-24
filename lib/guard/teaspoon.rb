@@ -14,7 +14,7 @@ module Guard
         all_after_pass:       true,
         all_on_start:         true,
         keep_failed:          true,
-        formatters:           'clean',
+        formatters:           "clean",
         run_all:              {},
         run_on_modifications: {}
       }.merge(options)

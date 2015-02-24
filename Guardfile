@@ -9,5 +9,5 @@ guard :teaspoon, environment: "spec/dummy/spec/teaspoon_env.rb" do
   watch(%r{#{root}/spec/javascripts/(.*)})
 
   # QUnit
-  #watch(%r{#{root}/test/javascripts/(.*)})
+  # watch(%r{#{root}/test/javascripts/(.*)})
 end
