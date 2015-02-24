@@ -1,7 +1,7 @@
 Guard-Teaspoon
 ==============
 
-[![Gem Version](https://badge.fury.io/rb/guard-teaspoon.png)](http://badge.fury.io/rb/guard-teaspoon)
+[![Gem Version](https://img.shields.io/gem/v/guard-teaspoon.svg)](https://rubygems.org/gems/guard-teaspoon)
 [![Dependency Status](https://gemnasium.com/modeset/guard-teaspoon.png)](https://gemnasium.com/modeset/guard-teaspoon)
 [![Build Status](https://img.shields.io/travis/modeset/guard-teaspoon.svg)](https://travis-ci.org/modeset/guard-teaspoon)
 [![Code Climate](https://codeclimate.com/github/modeset/guard-teaspoon/badges/gpa.svg)](https://codeclimate.com/github/modeset/guard-teaspoon)
