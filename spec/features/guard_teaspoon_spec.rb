@@ -7,6 +7,7 @@ feature "Full setup of an app that can run guard-teaspoon", aruba: true do
     run_simple("bundle exec rails new testapp --skip-bundle")
     cd("testapp")
     append_to_file("Gemfile", "gem 'teaspoon'" + "\n")
+    append_to_file("Gemfile", "gem 'teaspoon-jasmine'" + "\n")
     append_to_file("Gemfile", "gem 'guard-teaspoon', path: '#{File.expand_path('../../../', __FILE__)}'" + "\n")
     append_to_file("Gemfile", "gem 'rb-fsevent'" + "\n")
     run_simple("bundle install")
