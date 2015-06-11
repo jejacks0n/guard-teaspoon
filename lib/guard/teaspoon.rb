@@ -68,7 +68,7 @@ module Guard
     private
 
     def notify(status)
-      UI.info(status.to_s.capitalize, title: "Teaspoon Guard", image: status)
+      Notifier.notify(status.to_s.capitalize, title: "Teaspoon Guard", image: status)
     end
 
     def remove_failed(paths)

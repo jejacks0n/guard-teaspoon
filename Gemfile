@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gemspec
 
 gem "teaspoon", github: "modeset/teaspoon"
+gem "teaspoon-jasmine", github: "modeset/teaspoon"
 
 # used by the dummy application
 gem "rails", ">= 4.0.0"

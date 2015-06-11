@@ -4,7 +4,7 @@ require "teaspoon/console"
 describe Guard::Teaspoon::Runner do
 
   before do
-    Teaspoon::Console.stub(:new)
+    allow(Teaspoon::Console).to receive(:new)
   end
 
   describe "#initialize" do
@@ -16,10 +16,10 @@ describe Guard::Teaspoon::Runner do
     end
 
     it "aborts with a message on Teaspoon::EnvironmentNotFound" do
-      Teaspoon::Console.should_receive(:new).and_raise(Teaspoon::EnvironmentNotFound)
-      Guard::Teaspoon::Runner.any_instance.should_receive(:abort)
-      STDOUT.should_receive(:print).with("Unable to load Teaspoon environment in {spec/teaspoon_env.rb, test/teaspoon_env.rb, teaspoon_env.rb}.\n")
-      STDOUT.should_receive(:print).with("Consider using -r path/to/teaspoon_env\n")
+      allow(Teaspoon::Console).to receive(:new) { raise Teaspoon::EnvironmentNotFound, {} }
+      expect_any_instance_of(Guard::Teaspoon::Runner).to receive(:abort)
+      expect(STDOUT).to receive(:print).with("Unable to load Teaspoon environment in {spec/teaspoon_env.rb, test/teaspoon_env.rb, teaspoon_env.rb}.\n")
+      expect(STDOUT).to receive(:print).with("Consider using -r path/to/teaspoon_env\n")
       Guard::Teaspoon::Runner.new
     end
 
@@ -35,14 +35,14 @@ describe Guard::Teaspoon::Runner do
     end
 
     it "calls execute on console" do
-      console.should_receive(:execute).with({foo: "bar", baz: "teaspoon"})
+      expect(console).to receive(:execute).with({foo: "bar", baz: "teaspoon"})
       subject.run_all(baz: "teaspoon")
     end
 
     it 'removes previously set files so that all files are run' do
       subject = Guard::Teaspoon::Runner.new(files: ["file1", "file2"], baz: "teaspoon")
       subject.console = console
-      console.should_receive(:execute).with(foo: "bar", baz: "teaspoon")
+      expect(console).to receive(:execute).with(foo: "bar", baz: "teaspoon")
       subject.run_all(foo: "bar")
     end
 
@@ -59,12 +59,12 @@ describe Guard::Teaspoon::Runner do
 
     it "calls execute on console" do
       files = ["file1", "file2"]
-      console.should_receive(:execute).with({foo: "bar", baz: "teaspoon", files: files})
+      expect(console).to receive(:execute).with({foo: "bar", baz: "teaspoon", files: files})
       subject.run(files, baz: "teaspoon")
     end
 
     it "does nothing if there's no paths" do
-      console.should_not_receive(:execute)
+      expect(console).to_not receive(:execute)
       subject.run([], baz: "teaspoon")
     end
 

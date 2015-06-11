@@ -21,11 +21,15 @@ module Guard
         # run all tests instead of running only the last run tests
         @options.delete :files
         @console.execute(@options.merge(options))
+      rescue
+        false # don't bubble up exceptions
       end
 
       def run(files = [], options = {})
         return false if files.empty?
         @console.execute(@options.merge(options).merge(files: files))
+      rescue
+        false # don't bubble up exceptions
       end
 
       private
