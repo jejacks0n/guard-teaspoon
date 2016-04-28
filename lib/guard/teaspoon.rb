@@ -61,7 +61,7 @@ module Guard
         throw :task_has_failed
       else
         notify(:success)
-        run_all if @last_failed
+        run_all if @last_failed && @options[:all_after_pass]
       end
     end
 
