@@ -155,6 +155,20 @@ describe Guard::Teaspoon do
       subject.run_on_modifications(original_paths)
     end
 
+    it "if all specs pass, it does not call run_all if the option all_after_pass is set to false" do
+      options = subject.instance_variable_get(:@options)
+      subject.instance_variable_set(:@options, options.merge({ all_after_pass: false }))
+      subject.last_failed = true
+
+      expect(resolver).to receive(:resolve)
+      expect(resolver).to receive(:suites).and_return({"default" => ["foo", "bar"]})
+
+      expect(runner).to receive(:run).and_return(true)
+      expect(runner).to_not receive(:run_all)
+
+      subject.run_on_modifications(original_paths)
+    end
+
   end
 
 end
